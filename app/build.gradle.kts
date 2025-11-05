@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
-
+    alias(libs.plugins.google.ksp)
     // This plugin is now included in libs.plugins.kotlin.android,
     // but leaving it for now won't cause harm.
     // alias(libs.plugins.kotlin.compose) // This might be redundant depending on your AGP version
@@ -65,31 +65,9 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-
-
-  /*  // 🏠 ROOM (Database)
+// Room Database
     implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler) // برای annotation processing
-
-// 🧠 LIFECYCLE
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx.v286)
-
-// ⚙️ COROUTINES
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.android)
-
-// 🎨 MATERIAL
-    implementation(libs.material)
-
-// 📜 RECYCLERVIEW
-    implementation("androidx.recyclerview:recyclerview:1.4.0")
-
-// 📐 CONSTRAINTLAYOUT
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-
-// 🔧 (اختیاری اما مفید برای ViewModel و SavedState)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.9.4")*/
+    implementation(libs.androidx.room.ktx) // For Kotlin Coroutines support
+    ksp(libs.androidx.room.compiler) // Use "ksp" for the annotation processor
 
 }
