@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
  * The main database class for the application.
  * It lists the entities the database contains and provides access to the DAOs.
  */
-@Database(entities = [FoodLog::class], version = 1)
+@Database(entities = [FoodLogEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
   /**
