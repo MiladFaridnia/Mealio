@@ -56,7 +56,6 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
-//    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
@@ -70,7 +69,8 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-// Room Database
+
+    // Room Database
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx) // For Kotlin Coroutines support
     ksp(libs.androidx.room.compiler) // Use "ksp" for the annotation processor
@@ -79,8 +79,13 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
     // Lifecycle ViewModel integration for Compose
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+    // Compose UI dependencies
+    implementation(libs.androidx.compose.ui.ui)
+    implementation(libs.androidx.compose.material3.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
 
 }
