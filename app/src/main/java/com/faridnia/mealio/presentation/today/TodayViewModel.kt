@@ -19,7 +19,7 @@ import javax.inject.Inject
 /**
  * ViewModel responsible for managing today's food logs.
  *
- * Uses [com.faridnia.mealio.domain.repository.FoodLogRepository] for data operations and exposes [kotlinx.coroutines.flow.StateFlow] to the UI layer.
+ * Uses [FoodLogRepository] for data operations and exposes [kotlinx.coroutines.flow.StateFlow] to the UI layer.
  */
 @HiltViewModel
 class TodayViewModel @Inject constructor(
@@ -40,14 +40,12 @@ class TodayViewModel @Inject constructor(
     private fun loadTodayLogs() {
         val today = LocalDate.now(ZoneId.of("Asia/Tehran"))
         foodLogRepository.getLogsForDay(today)
-            .onEach { logs -> _todayLogs.value = logs }
+            .onEach { _todayLogs.value = it }
             .launchIn(viewModelScope)
     }
 
-    /**
-     * Adds a new [FoodLog] entry for today.
-     */
-    fun addLog(foodTitle: String, unit: String, amount: Int) {
+    /** Adds a new food log entry for today. */
+    fun addLog(foodTitle: String, unit: String, amount: Double) {
         viewModelScope.launch {
             val today = LocalDate.now(ZoneId.of("Asia/Tehran"))
             val newLog = FoodLog(
@@ -55,37 +53,46 @@ class TodayViewModel @Inject constructor(
                 epochDay = today.toEpochDay(),
                 foodTitle = foodTitle,
                 unit = unit,
-                amount = amount,
+                amount = amount.toInt(),
                 createdAt = System.currentTimeMillis()
             )
             foodLogRepository.addFoodLog(newLog)
         }
     }
 
-    /**
-     * Deletes a [FoodLog].
-     */
+    /** Updates an existing food log by ID. */
+    fun updateLog(id: String, foodTitle: String, unit: String, amount: Double) {
+        viewModelScope.launch {
+            val today = LocalDate.now(ZoneId.of("Asia/Tehran"))
+            val updated = FoodLog(
+                id = id,
+                epochDay = today.toEpochDay(),
+                foodTitle = foodTitle,
+                unit = unit,
+                amount = amount.toInt(),
+                createdAt = System.currentTimeMillis()
+            )
+            foodLogRepository.updateFoodLog(updated)
+        }
+    }
+
+    /** Deletes a log and stores it temporarily for undo. */
+    private var lastDeleted: FoodLog? = null
+
     fun deleteLog(log: FoodLog) {
         viewModelScope.launch {
+            lastDeleted = log
             foodLogRepository.deleteFoodLog(log)
         }
     }
 
-    /**
-     * Updates an existing [FoodLog].
-     */
-    fun updateLog(log: FoodLog) {
-        viewModelScope.launch {
-            foodLogRepository.updateFoodLog(log)
-        }
-    }
-
-    /**
-     * Restores the last deleted [FoodLog], if available.
-     */
+    /** Restores the last deleted item. */
     fun undoLastDelete() {
         viewModelScope.launch {
-            foodLogRepository.restoreLastDeleted()
+            lastDeleted?.let {
+                foodLogRepository.addFoodLog(it)
+                lastDeleted = null
+            }
         }
     }
 }
