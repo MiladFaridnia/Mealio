@@ -1,4 +1,4 @@
-package com.faridnia.mealio.ui.theme
+package com.faridnia.mealio.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
