@@ -3,10 +3,15 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.google.ksp)
-    // This plugin is now included in libs.plugins.kotlin.android,
-    // but leaving it for now won't cause harm.
-    // alias(libs.plugins.kotlin.compose) // This might be redundant depending on your AGP version
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
+    id("kotlin-kapt")
+
+
+    /*
+    alias(libs.plugins.hilt2) version "2.51.1" apply false
+    alias(libs.plugins.ksp) version "2.0.21-1.0.27" apply false
+*/
 }
 
 android {
@@ -51,7 +56,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+//    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
@@ -69,5 +74,13 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx) // For Kotlin Coroutines support
     ksp(libs.androidx.room.compiler) // Use "ksp" for the annotation processor
+
+    // Dependency Injection
+    implementation(libs.hilt.android)
+    kapt(libs.dagger.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    // Lifecycle ViewModel integration for Compose
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
 
 }

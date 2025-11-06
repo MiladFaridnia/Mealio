@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        maven("https://en-mirror.ir")
         google {
             content {
                 includeGroupByRegex("com\\.android.*")
@@ -9,15 +10,18 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven("https://jitpack.io")
+
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        maven("https://en-mirror.ir")
         google()
         mavenCentral()
-        maven("https://en-mirror.ir")
         maven("https://jitpack.io")
+
     }
 }
 
