@@ -10,6 +10,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -94,4 +95,16 @@ fun AddEditFoodSheet(
 
 		Spacer(modifier = Modifier.height(12.dp))
 	}
+}
+
+@PreviewLightDark
+@Composable
+fun AddEditFoodSheetPreview() {
+    AddEditFoodSheet(
+        initialTitle = "Apple",
+        initialUnit = "g",
+        initialAmount = "100.0",
+        onSave = { _, _, _ -> },
+        onCancel = {}
+    )
 }

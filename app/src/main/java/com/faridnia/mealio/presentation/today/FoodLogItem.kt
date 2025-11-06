@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -57,4 +58,16 @@ fun FoodLogItem(
 private fun Double.removeTrailingZeros(): String {
 	val s = this.toString()
 	return if (s.contains('.')) s.trimEnd('0').trimEnd('.') else s
+}
+
+@PreviewLightDark
+@Composable
+fun FoodLogItemPreview() {
+    FoodLogItem(
+        title = "Banana",
+        amount = 100,
+        unit = "g",
+        onEdit = {},
+        onDelete = {}
+    )
 }
