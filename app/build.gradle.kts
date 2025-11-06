@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         applicationId = "com.faridnia.mealio"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34 // Match compileSdk
         versionCode = 1
         versionName = "1.0"
