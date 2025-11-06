@@ -1,4 +1,4 @@
-package com.faridnia.mealio
+package com.faridnia.mealio.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.faridnia.mealio.ui.theme.MealioTheme
+import com.faridnia.mealio.presentation.theme.MealioTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
