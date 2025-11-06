@@ -1,9 +1,11 @@
 package com.faridnia.mealio.data.repository
 
-import com.faridnia.mealio.data.local.FoodLog
 import com.faridnia.mealio.data.local.FoodLogDao
+import com.faridnia.mealio.domain.model.FoodLog
 import com.faridnia.mealio.domain.repository.FoodLogRepository
+import com.faridnia.mealio.data.mapper.FoodLogMapper
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import java.time.LocalDate
 import javax.inject.Inject
 
@@ -18,47 +20,25 @@ class FoodLogRepositoryImpl @Inject constructor(
 
     private var lastDeleted: FoodLog? = null
 
-    /**
-     * Retrieves all food logs for a specific day.
-     *
-     * @param date The date to retrieve logs for.
-     * @return A Flow of a list of FoodLog entities for the given day.
-     */
     override fun getLogsForDay(date: LocalDate): Flow<List<FoodLog>> {
-        return foodLogDao.getLogsForDay(date.toEpochDay())
+        val epochDay = date.toEpochDay()
+        return foodLogDao.getLogsForDay(epochDay)
+            .map { list -> list.map(FoodLogMapper::fromEntity) }
     }
 
-    /**
-     * Adds a new food log to the database.
-     *
-     * @param log The FoodLog to add.
-     */
     override suspend fun addFoodLog(log: FoodLog) {
-        foodLogDao.insert(log)
+        foodLogDao.insert(FoodLogMapper.toEntity(log))
     }
 
-    /**
-     * Updates an existing food log.
-     *
-     * @param log The FoodLog to update.
-     */
     override suspend fun updateFoodLog(log: FoodLog) {
-        foodLogDao.update(log)
+        foodLogDao.update(FoodLogMapper.toEntity(log))
     }
 
-    /**
-     * Deletes a food log and caches it for a potential undo operation.
-     *
-     * @param log The FoodLog to delete.
-     */
     override suspend fun deleteFoodLog(log: FoodLog) {
         lastDeleted = log
-        foodLogDao.delete(log)
+        foodLogDao.delete(FoodLogMapper.toEntity(log))
     }
 
-    /**
-     * Restores the last deleted food log.
-     */
     override suspend fun restoreLastDeleted() {
         lastDeleted?.let {
             addFoodLog(it)
@@ -66,21 +46,3 @@ class FoodLogRepositoryImpl @Inject constructor(
         }
     }
 }
-
-/*
-* How to use in a ViewModel:
-*
-* @HiltViewModel
-* class MyViewModel @Inject constructor(
-*     private val foodLogRepository: FoodLogRepository
-* ) : ViewModel() {
-*
-*     val todayLogs = foodLogRepository.getLogsForDay(LocalDate.now())
-*
-*     fun onAddLog(log: FoodLog) {
-*         viewModelScope.launch {
-*             foodLogRepository.addFoodLog(log)
-*         }
-*     }
-* }
-*/
