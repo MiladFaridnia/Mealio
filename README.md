@@ -7,6 +7,13 @@ Why Mealio -> Becuase its just like my name :D -> Mealio -> Milad
 
 ---
 
+## 📸 Screenshots
+
+| Today Screen Dark Theme | Add/Edit Sheet Light Theme |
+|--------------|----------------|
+| ![Today Screen Dark Theme](https://github.com/user-attachments/assets/1539bfe6-250b-40e1-b096-833095667827) | ![Add/Edit Sheet Light Theme](https://github.com/user-attachments/assets/7d690ba9-4163-4710-8f76-aefee39cde60) |
+
+
 ## ✨ Features
 
 ### 🥗 Smart Meal Tracking
@@ -20,6 +27,9 @@ Track your weight and health data visually, powered by advanced analytics and pe
 
 ### 💪 Nutrition Dashboard
 Understand your daily macros (proteins, carbs, fats) and micros (vitamins, minerals) to make informed food choices.
+
+### 💡 Light & Dark Theme
+Enjoy a comfortable viewing experience in any lighting condition with beautifully designed Light and Dark themes.
 
 ### 🔄 Sync with Fitness Gadgets
 Connect Mealio with your favorite fitness apps and wearable devices for complete health monitoring.
