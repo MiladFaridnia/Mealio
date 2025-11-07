@@ -1,4 +1,4 @@
-# 🍽️ Mealio — Your Personalized Health & Nutrition Companion
+# 🍽️ Mealio (By Milad)— Your Personalized Health & Nutrition Companion
 
 Mealio helps you eat smarter and live healthier.  
 It’s a beautifully designed, modern Android app built with **Jetpack Compose**, **Hilt**, **Room**, and **Coroutines** — providing a smooth, personalized experience for tracking meals, planning diets, and reaching your ideal health goals.
