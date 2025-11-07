@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import com.faridnia.mealio.presentation.theme.MealioTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -100,11 +101,13 @@ fun AddEditFoodSheet(
 @PreviewLightDark
 @Composable
 fun AddEditFoodSheetPreview() {
-    AddEditFoodSheet(
-        initialTitle = "Apple",
-        initialUnit = "g",
-        initialAmount = "100.0",
-        onSave = { _, _, _ -> },
-        onCancel = {}
-    )
+    MealioTheme {
+        AddEditFoodSheet(
+            initialTitle = "Apple",
+            initialUnit = "g",
+            initialAmount = "100.0",
+            onSave = { _, _, _ -> },
+            onCancel = {}
+        )
+    }
 }
