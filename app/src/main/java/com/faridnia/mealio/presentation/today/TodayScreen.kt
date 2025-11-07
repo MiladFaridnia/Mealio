@@ -32,6 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.faridnia.mealio.R
+import com.faridnia.mealio.domain.model.FoodLog
 import com.faridnia.mealio.presentation.add_edit.AddEditFoodSheet
 import com.faridnia.mealio.presentation.today.component.FoodLogItem
 import com.faridnia.mealio.presentation.today.component.TotalCaloriesCard
@@ -55,12 +56,7 @@ fun TodayScreen(
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     var editingItem by remember { mutableStateOf<EditingPayload?>(null) }
 
-    // Recompute total calories whenever logs change (amount * 10)
-    val totalCalories by remember(logs) {
-        mutableIntStateOf(
-            logs.sumOf { (it.amount * 10.0) }.toInt()
-        )
-    }
+    val totalCalories by viewModel.totalCalories.collectAsState()
 
     val today = LocalDate.now(ZoneId.of("Asia/Tehran"))
     val formatter = DateTimeFormatter.ofPattern("EEEE dd MMMM yyyy")
@@ -176,5 +172,7 @@ fun TodayScreen(
         }
     }
 }
+
+private fun calculateCalories(logs: List<FoodLog>): Int = logs.sumOf { (it.amount * 10.0) }.toInt()
 
 

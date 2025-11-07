@@ -4,12 +4,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.faridnia.mealio.domain.model.FoodLog
 import com.faridnia.mealio.domain.repository.FoodLogRepository
+import com.faridnia.mealio.domain.util.CalorieCalculator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.ZoneId
@@ -29,6 +33,11 @@ class TodayViewModel @Inject constructor(
     // Backing property for today's food logs
     private val _todayLogs = MutableStateFlow<List<FoodLog>>(emptyList())
     val todayLogs: StateFlow<List<FoodLog>> = _todayLogs.asStateFlow()
+
+    // Stream of total calories (auto-calculated from logs)
+    val totalCalories: StateFlow<Int> = todayLogs
+        .combine(todayLogs) { logs, _ -> CalorieCalculator.calculate(logs) }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0)
 
     init {
         loadTodayLogs()
