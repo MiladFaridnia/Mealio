@@ -3,6 +3,7 @@ package com.faridnia.mealio.presentation.today
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -27,6 +28,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.faridnia.mealio.R
@@ -34,6 +36,9 @@ import com.faridnia.mealio.presentation.add_edit.AddEditFoodSheet
 import com.faridnia.mealio.presentation.today.component.FoodLogItem
 import com.faridnia.mealio.presentation.today.component.TotalCaloriesCard
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,11 +62,19 @@ fun TodayScreen(
         )
     }
 
+    val today = LocalDate.now(ZoneId.of("Asia/Tehran"))
+    val formatter = DateTimeFormatter.ofPattern("EEEE dd MMMM yyyy")
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Today") }
-            )
+                title = {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Center,
+                        text = today.format(formatter)
+                    )
+                })
         },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         floatingActionButton = {
