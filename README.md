@@ -3,6 +3,8 @@
 Mealio helps you eat smarter and live healthier.  
 It’s a beautifully designed, modern Android app built with **Jetpack Compose**, **Hilt**, **Room**, and **Coroutines** — providing a smooth, personalized experience for tracking meals, planning diets, and reaching your ideal health goals.
 
+Why Mealio -> Becuase its just like my name :D -> Mealio -> Milad
+
 ---
 
 ## ✨ Features
