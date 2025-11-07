@@ -2,65 +2,73 @@ package com.faridnia.mealio.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
+// 🩵 Pastel, Matte, Cool-toned light palette (no warm colors)
 object ColorLightTokens {
-    val Primary = Color(0xFF658C58)            // Main brand green
-    val OnPrimary = Color(0xFFFFFFFF)
-    val PrimaryContainer = Color(0xFFBBC863)   // Softer green container
-    val OnPrimaryContainer = Color(0xFF1E361D)
 
-    val Secondary = Color(0xFF31694E)          // Complementary deep tone
-    val OnSecondary = Color(0xFFFFFFFF)
-    val SecondaryContainer = Color(0xFF9BC59A)
-    val OnSecondaryContainer = Color(0xFF0E291B)
+    // 🌿 Primary (Soft Mint)
+    val Primary = Color(0xFF41A67E)
+    val OnPrimary = Color(0xFF0B2612)
+    val PrimaryContainer = Color(0xFF41A67E)
+    val OnPrimaryContainer = Color(0xFF93BFC7)
 
-    val Tertiary = Color(0xFFF0E491)           // Warm accent yellow
-    val OnTertiary = Color(0xFF3D3600)
-    val TertiaryContainer = Color(0xFFFFF4C2)
-    val OnTertiaryContainer = Color(0xFF2E2800)
+    // 💧 Secondary (Bluish Gray)
+    val Secondary = Color(0xFF93BFC7)
+    val OnSecondary = Color(0xFF102125)
+    val SecondaryContainer = Color(0xFFD6EDF1)
+    val OnSecondaryContainer = Color(0xFF1C3C40)
 
-    val Background = Color(0xFFFFFBF5)
-    val OnBackground = Color(0xFF1C1C16)
+    // 🌊 Tertiary (Pastel Teal)
+    val Tertiary = Color(0xFFB7D9DA)
+    val OnTertiary = Color(0xFF1E2F30)
+    val TertiaryContainer = Color(0xFFDCEFF0)
+    val OnTertiaryContainer = Color(0xFF203637)
 
-    val Surface = Color(0xFFFFFBF5)
-    val OnSurface = Color(0xFF1C1C16)
-    val SurfaceVariant = Color(0xFFE2E4D6)
-    val OnSurfaceVariant = Color(0xFF45483F)
+    // ☁️ Backgrounds
+    val Background = Color(0xFFECF4E8)
+    val OnBackground = Color(0xFF1A1D1B)
+    val Surface = Color(0xFFECF4E8)
+    val OnSurface = Color(0xFF1A1D1B)
+    val SurfaceVariant = Color(0xFFD8E6D7)
+    val OnSurfaceVariant = Color(0xFF414843)
 
-    val InverseSurface = Color(0xFF30302A)
-    val InverseOnSurface = Color(0xFFF3F0E6)
-    val InversePrimary = Color(0xFFAACB9E)
+    // 🔁 Inverse
+    val InverseSurface = Color(0xFF2D3230)
+    val InverseOnSurface = Color(0xFFE8EFE8)
+    val InversePrimary = Color(0xFF93BFC7)
 
-    val Error = Color(0xFFBA1A1A)
+    // ⚠️ Error (muted tone to stay soft)
+    val Error = Color(0xFF9B4A4A)
     val OnError = Color(0xFFFFFFFF)
-    val ErrorContainer = Color(0xFFFFDAD6)
+    val ErrorContainer = Color(0xFFF4DADA)
     val OnErrorContainer = Color(0xFF410002)
 
-    val Outline = Color(0xFF76786B)
-    val OutlineVariant = Color(0xFFC6C8B8)
+    // 🪶 Outline & Scrim
+    val Outline = Color(0xFF8CA89C)
+    val OutlineVariant = Color(0xFFC7D9CA)
     val Scrim = Color(0xFF000000)
 
-    // Extended surfaces for Material 3
-    val SurfaceBright = Color(0xFFFFFBF5)
-    val SurfaceContainer = Color(0xFFF5F3EA)
-    val SurfaceContainerHigh = Color(0xFFEAE8DE)
-    val SurfaceContainerHighest = Color(0xFFDCDAD1)
-    val SurfaceContainerLow = Color(0xFFF9F7EF)
+    // 🧊 Extended Surfaces (Material 3)
+    val SurfaceBright = Color(0xFFF6FBF4)
+    val SurfaceContainer = Color(0xFFEAF3E8)
+    val SurfaceContainerHigh = Color(0xFFE0ECE2)
+    val SurfaceContainerHighest = Color(0xFFB9EAB8)
+    val SurfaceContainerLow = Color(0xFFF2F9F0)
     val SurfaceContainerLowest = Color(0xFFFFFFFF)
-    val SurfaceDim = Color(0xFFE3E0D6)
+    val SurfaceDim = Color(0xFFE1EAE0)
 
-    // Fixed roles (M3 tonal palettes)
-    val PrimaryFixed = Color(0xFFD3E7C9)
-    val PrimaryFixedDim = Color(0xFFAACB9E)
-    val OnPrimaryFixed = Color(0xFF1E361D)
-    val OnPrimaryFixedVariant = Color(0xFF3E6A3E)
+    // 🎨 Fixed Roles (used for tonal palettes)
+    val PrimaryFixed = Color(0xFFDDF9D1)
+    val PrimaryFixedDim = Color(0xFFB9EAB8)
+    val OnPrimaryFixed = Color(0xFF113121)
+    val OnPrimaryFixedVariant = Color(0xFF285A3B)
 
-    val SecondaryFixed = Color(0xFFCDEAD1)
-    val SecondaryFixedDim = Color(0xFFA3C9AC)
-    val OnSecondaryFixed = Color(0xFF0E291B)
-    val OnSecondaryFixedVariant = Color(0xFF345A3C)
+    val SecondaryFixed = Color(0xFFE3F4F7)
+    val SecondaryFixedDim = Color(0xFFB5D9E0)
+    val OnSecondaryFixed = Color(0xFF103033)
+    val OnSecondaryFixedVariant = Color(0xFF305E63)
 
-    val TertiaryFixed = Color(0xFFFFF4C2)
-    val TertiaryFixedDim = Color(0xFFF0E491)
-    val OnTertiaryFixed = Color(0xFF3D3600)
-    val OnTertiaryFixedVariant = Color(0xFF5B5200)
+    val TertiaryFixed = Color(0xFFDCEFF0)
+    val TertiaryFixedDim = Color(0xFFB7D9DA)
+    val OnTertiaryFixed = Color(0xFF1E2F30)
+    val OnTertiaryFixedVariant = Color(0xFF3A5758)
 }
