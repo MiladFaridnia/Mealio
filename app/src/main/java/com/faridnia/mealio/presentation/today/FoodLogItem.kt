@@ -14,60 +14,67 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import com.faridnia.mealio.presentation.theme.MealioTheme
 
 @Composable
 fun FoodLogItem(
-	title: String,
-	amount: Int,
-	unit: String,
-	onEdit: () -> Unit,
-	onDelete: () -> Unit,
-	modifier: Modifier = Modifier
+    title: String,
+    amount: Int,
+    unit: String,
+    onEdit: () -> Unit,
+    onDelete: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-	Card(
-		modifier = modifier
-			.fillMaxWidth()
-			.padding(horizontal = 16.dp, vertical = 8.dp)
-	) {
-		Row(
-			modifier = Modifier
-				.fillMaxWidth()
-				.padding(16.dp),
-			horizontalArrangement = Arrangement.SpaceBetween
-		) {
-			Column(modifier = Modifier.weight(1f)) {
-				Text(text = title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
-				Spacer(modifier = Modifier.height(4.dp))
-				Text(
-					text = "${amount/*.removeTrailingZeros()*/} $unit",
-					style = MaterialTheme.typography.bodyMedium
-				)
-			}
-			Row {
-				IconButton(onClick = onEdit) {
-					Icon(imageVector = Icons.Outlined.Edit, contentDescription = "Edit")
-				}
-				IconButton(onClick = onDelete) {
-					Icon(imageVector = Icons.Outlined.Delete, contentDescription = "Delete")
-				}
-			}
-		}
-	}
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "${amount/*.removeTrailingZeros()*/} $unit",
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+            Row {
+                IconButton(onClick = onEdit) {
+                    Icon(imageVector = Icons.Outlined.Edit, contentDescription = "Edit")
+                }
+                IconButton(onClick = onDelete) {
+                    Icon(imageVector = Icons.Outlined.Delete, contentDescription = "Delete")
+                }
+            }
+        }
+    }
 }
 
 private fun Double.removeTrailingZeros(): String {
-	val s = this.toString()
-	return if (s.contains('.')) s.trimEnd('0').trimEnd('.') else s
+    val s = this.toString()
+    return if (s.contains('.')) s.trimEnd('0').trimEnd('.') else s
 }
 
 @PreviewLightDark
 @Composable
 fun FoodLogItemPreview() {
-    FoodLogItem(
-        title = "Banana",
-        amount = 100,
-        unit = "g",
-        onEdit = {},
-        onDelete = {}
-    )
+    MealioTheme {
+        FoodLogItem(
+            title = "Banana",
+            amount = 100,
+            unit = "g",
+            onEdit = {},
+            onDelete = {}
+        )
+    }
 }
