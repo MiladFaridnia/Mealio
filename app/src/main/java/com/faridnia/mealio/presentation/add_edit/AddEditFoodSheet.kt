@@ -1,4 +1,4 @@
-package com.faridnia.mealio.presentation.today
+package com.faridnia.mealio.presentation.add_edit
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
